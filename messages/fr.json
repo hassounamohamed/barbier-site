@@ -1,0 +1,12 @@
+{
+  "nav": { "services": "Services", "gallery": "Réalisations", "infos": "Horaires & lieu", "contact": "Contact" },
+  "hero": { "eyebrow": "Barbier · {city} · Depuis {since}", "lead": "Coupe nette, barbe parfaite, rasage à l'ancienne. Ici, on ne coupe pas seulement les cheveux : on soigne le style.", "book": "Réserver", "details": "Horaires & lieu" },
+  "about": { "title": "Qui sommes-nous", "copy": "Salut, moi c'est {barber}. Barbier depuis {years} ans, je mets la précision et la bonne humeur dans chaque coupe. Viens comme tu es, repars comme un boss.", "stats": { "years": "Ans d'expérience", "clients": "Clients satisfaits", "stars": "Étoiles" } },
+  "services": { "title": "Services", "items": { "cut": { "title": "Coupe homme", "desc": "Ciseaux ou tondeuse, selon ton style." }, "fade": { "title": "Dégradé / Fade", "desc": "Transitions propres, finition nette." }, "beard": { "title": "Barbe", "desc": "Taille, contours et soin." }, "razor": { "title": "Rasage", "desc": "Serviette chaude, rasoir classique." }, "combo": { "title": "Coupe + barbe", "desc": "Le pack complet." }, "kid": { "title": "Enfant", "desc": "Jusqu'à 12 ans." } } },
+  "gallery": { "title": "Nos réalisations", "alts": ["Coupe classique", "Coupe moderne", "Barbe", "Rasage", "Dégradé", "Coupe moderne"] },
+  "location": { "title": "Horaires & lieu", "hours": "Horaires", "address": "Adresse", "directions": "Itinéraire", "closed": "Fermé" },
+  "hours": { "days": ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"] },
+  "status": { "open": "Ouvert maintenant · jusqu'à {hour}h", "closed": "Fermé actuellement", "loading": "..." },
+  "contact": { "title": "Prends rendez-vous", "copy": "Un appel, un message, et ta place est réservée.", "call": "Appeler", "whatsapp": "WhatsApp", "instagram": "Instagram", "facebook": "Facebook" },
+  "footer": "Tous droits réservés", "galleryControls": { "close": "Fermer", "previous": "Précédent", "next": "Suivant", "open": "Ouvrir {alt}" }, "labels": { "theme": "Changer de thème", "language": "Choisir la langue", "whatsapp": "Contacter sur WhatsApp" }, "marquee": "COUPE • BARBE • RASAGE • DÉGRADÉ • STYLE •"
+}

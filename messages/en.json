@@ -1,0 +1,12 @@
+{
+  "nav": { "services": "Services", "gallery": "Gallery", "infos": "Hours & location", "contact": "Contact" },
+  "hero": { "eyebrow": "Barber · {city} · Since {since}", "lead": "Sharp cuts, perfect beards, old-school shaves. We do more than cut hair: we take care of your style.", "book": "Book now", "details": "Hours & location" },
+  "about": { "title": "About us", "copy": "Hi, I'm {barber}. A barber for {years} years, I bring precision and good energy to every cut. Come as you are, leave looking like a boss.", "stats": { "years": "Years of experience", "clients": "Happy clients", "stars": "Stars" } },
+  "services": { "title": "Services", "items": { "cut": { "title": "Men's cut", "desc": "Scissors or clippers, made for your style." }, "fade": { "title": "Fade", "desc": "Clean transitions, sharp finish." }, "beard": { "title": "Beard", "desc": "Trim, contours and care." }, "razor": { "title": "Shave", "desc": "Hot towel, classic razor." }, "combo": { "title": "Cut + beard", "desc": "The complete package." }, "kid": { "title": "Kids", "desc": "Up to 12 years old." } } },
+  "gallery": { "title": "Our work", "alts": ["Classic cut", "Modern cut", "Beard", "Shave", "Fade", "Modern cut"] },
+  "location": { "title": "Hours & location", "hours": "Hours", "address": "Address", "directions": "Get directions", "closed": "Closed" },
+  "hours": { "days": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] },
+  "status": { "open": "Open now · until {hour}", "closed": "Currently closed", "loading": "..." },
+  "contact": { "title": "Book an appointment", "copy": "A call or message, and your chair is ready.", "call": "Call", "whatsapp": "WhatsApp", "instagram": "Instagram", "facebook": "Facebook" },
+  "footer": "All rights reserved", "galleryControls": { "close": "Close", "previous": "Previous", "next": "Next", "open": "Open {alt}" }, "labels": { "theme": "Change theme", "language": "Choose language", "whatsapp": "Contact on WhatsApp" }, "marquee": "CUT • BEARD • SHAVE • FADE • STYLE •"
+}
