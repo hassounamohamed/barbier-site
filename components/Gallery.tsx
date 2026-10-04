@@ -9,8 +9,8 @@ import type { Messages } from "@/lib/i18n";
 type Item = (typeof config.gallery)[number];
 const vars = (g: Item) => ({ "--c1": g.c1, "--c2": g.c2 }) as React.CSSProperties;
 
-function Content({ g, alt, sizes }: { g: Item; alt: string; sizes: string }) {
-  return g.src ? <Image src={g.src} alt={alt} fill sizes={sizes} style={{ objectFit: "cover" }} /> : <Icon name="scissors" size={96} />;
+function Content({ g, alt, sizes, fit = "cover" }: { g: Item; alt: string; sizes: string; fit?: "cover" | "contain" }) {
+  return g.src ? <Image src={g.src} alt={alt} fill sizes={sizes} style={{ objectFit: fit }} /> : <Icon name="scissors" size={96} />;
 }
 
 export default function Gallery({ messages }: { messages: Messages }) {
@@ -57,7 +57,7 @@ export default function Gallery({ messages }: { messages: Messages }) {
           <button className="x" aria-label={messages.galleryControls.close} onClick={() => setOpen(null)}><Icon name="close" /></button>
           <button className="pv" aria-label={messages.galleryControls.previous} onClick={() => go(-1)}><Icon name="previous" /></button>
           <div className="box" style={vars(config.gallery[open])}>
-            <Content g={config.gallery[open]} alt={messages.gallery.alts[open]} sizes="90vw" />
+            <Content g={config.gallery[open]} alt={messages.gallery.alts[open]} sizes="90vw" fit="contain" />
           </div>
           <button className="nx" aria-label={messages.galleryControls.next} onClick={() => go(1)}><Icon name="next" /></button>
         </div>

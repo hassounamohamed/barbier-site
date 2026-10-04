@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <clipPath id="pole">
+      <rect x="15" y="4" width="34" height="56" rx="9" />
+    </clipPath>
+    <linearGradient id="glass" x1="0" x2="1">
+      <stop offset="0" stop-color="#111" />
+      <stop offset=".28" stop-color="#8d9299" />
+      <stop offset=".55" stop-color="#252525" />
+      <stop offset="1" stop-color="#050505" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#0e1628" />
+  <g clip-path="url(#pole)">
+    <rect x="15" y="4" width="34" height="56" fill="#fff" />
+    <g>
+      <path d="M-20 52 28-8h12L-8 52Zm34 20L62 12h12L26 72Z" fill="#c0283b" />
+      <path d="M-2 52 46-8h12L10 52Zm34 20L80 12h12L44 72Z" fill="#1f4478" />
+      <animateTransform attributeName="transform" type="translate" from="0 0" to="24 0" dur="1.8s" repeatCount="indefinite" />
+    </g>
+  </g>
+  <rect x="15" y="4" width="34" height="56" rx="9" fill="none" stroke="#444" stroke-width="1" />
+  <rect x="15" y="2" width="34" height="12" rx="6" fill="url(#glass)" stroke="#050505" />
+  <rect x="15" y="50" width="34" height="12" rx="6" fill="url(#glass)" stroke="#050505" />
+  <path d="M19 17v30" stroke="#fff" stroke-opacity=".35" stroke-width="2" />
+</svg>

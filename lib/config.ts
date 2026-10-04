@@ -10,7 +10,7 @@ export const config = {
   address: "Rue, quartier, Bembla",
   aboutImage: "https://scontent.ftun14-1.fna.fbcdn.net/v/t39.30808-6/647441273_906806815318856_8533906821845705437_n.jpg?stp=dst-jpg_tt6&cstp=mx960x958&ctp=s960x958&_nc_cat=106&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=K9cvYhE0vWYQ7kNvwGEooBp&_nc_oc=AdrtDBBP8U0Y0C4FIR_wq1q_Ez6A_WnXJo0QpfI0MPqi1Sr4CJ8q-hl1-1d6U1VfczA&_nc_zt=23&_nc_ht=scontent.ftun14-1.fna&_nc_gid=UI8a-Ofg3ArbgLoXuS6K8w&_nc_ss=7b2a8&oh=00_AQOM0yeA33SppJiB9ukoBbzywMzeuiXRLvOmEhM9QumiTA&oe=6AC6F739",
   // 0 = dimanche ... 6 = samedi ; null = fermé
-  hours: [null, [9, 20], [9, 20], [9, 20], [9, 20], [9, 20], [9, 21]] as ([number, number] | null)[],
+  hours: [[9, 21], null , [14, 20], [14, 20], [14, 20], [14, 20], [9, 21]] as ([number, number] | null)[],
 
   stats: [
     { n: 3, key: "years", suffix: "" },

@@ -29,7 +29,12 @@ export default function HomePage({ locale }: { locale: Locale }) {
         <Gallery messages={messages} />
         <Location messages={messages} />
         <Contact messages={messages} />
-        <footer>(c) {new Date().getFullYear()} {config.name} - {messages.footer}</footer>
+        <footer>
+          (c) {new Date().getFullYear()} {config.name} - {messages.footer} - {messages.developedBy}{" "}
+          <a href="https://mohamedhassouna.vercel.app" target="_blank" rel="noreferrer">
+            Mohamed Hassouna
+          </a>
+        </footer>
       </main>
       <WhatsAppFloat messages={messages} />
     </>

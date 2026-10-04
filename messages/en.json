@@ -8,5 +8,5 @@
   "hours": { "days": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] },
   "status": { "open": "Open now · until {hour}", "closed": "Currently closed", "loading": "..." },
   "contact": { "title": "Book an appointment", "copy": "A call or message, and your chair is ready.", "call": "Call", "whatsapp": "WhatsApp", "instagram": "Instagram", "facebook": "Facebook" },
-  "footer": "All rights reserved", "galleryControls": { "close": "Close", "previous": "Previous", "next": "Next", "open": "Open {alt}" }, "labels": { "theme": "Change theme", "language": "Choose language", "whatsapp": "Contact on WhatsApp" }, "marquee": "CUT • BEARD • SHAVE • FADE • STYLE •"
+  "footer": "All rights reserved", "developedBy": "Developed by", "galleryControls": { "close": "Close", "previous": "Previous", "next": "Next", "open": "Open {alt}" }, "labels": { "theme": "Change theme", "language": "Choose language", "whatsapp": "Contact on WhatsApp" }, "marquee": "CUT • BEARD • SHAVE • FADE • STYLE •"
 }

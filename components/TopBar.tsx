@@ -1,22 +1,37 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 import Icon from "./Icon";
 import type { Locale, Messages } from "@/lib/i18n";
 
+type Theme = "light" | "dark";
+const themeListeners = new Set<() => void>();
+
+function getTheme(): Theme {
+  if (typeof document === "undefined") return "light";
+  const savedTheme = document.documentElement.dataset.theme as Theme | undefined;
+  return savedTheme || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+}
+
+function subscribeToTheme(listener: () => void) {
+  themeListeners.add(listener);
+  return () => themeListeners.delete(listener);
+}
+
+function getServerTheme(): Theme {
+  return "light";
+}
+
 export default function TopBar({ locale, messages }: { locale: Locale; messages: Messages }) {
   const [languageOpen, setLanguageOpen] = useState(false);
-  const [theme, setTheme] = useState<"light" | "dark" | "system">(() => {
-    if (typeof document === "undefined") return "system";
-    return (document.documentElement.dataset.theme as "light" | "dark" | "system" | undefined) || "system";
-  });
+  const theme = useSyncExternalStore(subscribeToTheme, getTheme, getServerTheme);
   const cycle = () => {
-    const next = theme === "light" ? "dark" : theme === "dark" ? "system" : "light";
-    setTheme(next);
+    const next = theme === "dark" ? "light" : "dark";
     document.documentElement.classList.add("theme-transition");
     try { localStorage.setItem("barbier-theme", next); } catch {}
-    document.documentElement.dataset.theme = next === "system" ? "" : next;
+    document.documentElement.dataset.theme = next;
+    themeListeners.forEach((listener) => listener());
     document.querySelector('meta[name="theme-color"]')?.setAttribute("content", next === "light" ? "#f6ecd6" : "#0e1628");
     window.setTimeout(() => document.documentElement.classList.remove("theme-transition"), 360);
   };

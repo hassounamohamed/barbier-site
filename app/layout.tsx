@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import { Playfair_Display, Inter, Cairo } from "next/font/google";
 import "./globals.css";
 import Loader from "@/components/Loader";
@@ -13,6 +14,7 @@ const cairo = Cairo({ subsets: ["arabic"], weight: ["400", "600", "700", "800"],
 export const metadata: Metadata = {
   title: `${config.name} — Barbier à ${config.city}`,
   description: `Coupe, dégradé, barbe et rasage à ${config.city}. Réservez par téléphone ou WhatsApp.`,
+  icons: { icon: [{ url: "/icon.svg", type: "image/svg+xml" }] },
 };
 export const viewport: Viewport = { viewportFit: "cover", themeColor: "#0e1628" };
 
@@ -20,7 +22,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="fr" suppressHydrationWarning>
       <head>
-        <script dangerouslySetInnerHTML={{ __html: `try{var t=localStorage.getItem('barbier-theme');if(t&&t!=='system')document.documentElement.dataset.theme=t}catch(e){}` }} />
+        <Script id="theme-init" strategy="beforeInteractive">
+          {`try{var t=localStorage.getItem('barbier-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}`}
+        </Script>
       </head>
       <body className={`${playfair.variable} ${inter.variable} ${cairo.variable}`}>
         <LocaleDocument />

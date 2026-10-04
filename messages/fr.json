@@ -8,5 +8,5 @@
   "hours": { "days": ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"] },
   "status": { "open": "Ouvert maintenant · jusqu'à {hour}h", "closed": "Fermé actuellement", "loading": "..." },
   "contact": { "title": "Prends rendez-vous", "copy": "Un appel, un message, et ta place est réservée.", "call": "Appeler", "whatsapp": "WhatsApp", "instagram": "Instagram", "facebook": "Facebook" },
-  "footer": "Tous droits réservés", "galleryControls": { "close": "Fermer", "previous": "Précédent", "next": "Suivant", "open": "Ouvrir {alt}" }, "labels": { "theme": "Changer de thème", "language": "Choisir la langue", "whatsapp": "Contacter sur WhatsApp" }, "marquee": "COUPE • BARBE • RASAGE • DÉGRADÉ • STYLE •"
+  "footer": "Tous droits réservés", "developedBy": "Développé par", "galleryControls": { "close": "Fermer", "previous": "Précédent", "next": "Suivant", "open": "Ouvrir {alt}" }, "labels": { "theme": "Changer de thème", "language": "Choisir la langue", "whatsapp": "Contacter sur WhatsApp" }, "marquee": "COUPE • BARBE • RASAGE • DÉGRADÉ • STYLE •"
 }
