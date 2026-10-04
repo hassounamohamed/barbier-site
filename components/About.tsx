@@ -26,7 +26,7 @@ export default function About({ messages }: { messages: Messages }) {
             </div>
           </div>
           <div className="about-photo">
-            <Image src={config.aboutImage} alt={`${config.name} - ${messages.about.title}`} fill sizes="(max-width: 600px) 100vw, 42vw" />
+            <Image src={config.aboutImage} alt={`${config.name} - ${messages.about.title}`} fill sizes="(max-width: 800px) 100vw, 42vw" />
           </div>
         </div>
       </Reveal>

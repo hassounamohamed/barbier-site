@@ -10,7 +10,7 @@ export const config = {
   maps: "https://maps.app.goo.gl/W58X2o6uAj43M6729",
   mapsEmbed: "https://www.google.com/maps?q=35.6944754,10.7879057&output=embed",
   address: "Rue, quartier, Bembla",
-  aboutImage:"/gallery/pic0.jpeg" ,
+  aboutImage: "/gallery/pic0.jpeg",
   // 0 = dimanche ... 6 = samedi ; null = fermé
   hours: [[9, 21], null , [14, 20], [14, 20], [14, 20], [14, 20], [9, 21]] as ([number, number] | null)[],
 

@@ -114,6 +114,12 @@ h2.in::after{width:100%}
 .stats b{display:block;font:900 clamp(2rem,7vw,3.6rem) var(--font-playfair),serif;color:var(--blue)}
 .stats span{display:block;font-size:.85rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;overflow-wrap:anywhere}
 
+@media(max-width:800px){
+  .about-layout{grid-template-columns:1fr}
+  .about-layout .card{height:auto}
+  .about-photo{min-height:clamp(260px,55vw,420px)}
+}
+
 /* mobile */
 @media(max-width:600px){
   .hero{padding:96px 16px 80px 18px;justify-content:flex-start}
