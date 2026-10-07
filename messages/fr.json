@@ -12,7 +12,7 @@
 
 "booking": {
   "title": "Réserve ta place",
-  "subtitle": "Choisis ton service, ton jour et ton heure. Confirmation immédiate, sans compte.",
+  "subtitle": "Choisis ton service, ton jour et ton heure. Le barbier confirmera ta réservation.",
   "home": "Retour à l'accueil",
   "steps": ["Service", "Jour", "Heure", "Infos"],
   "pickService": "Quel service ?",
@@ -44,8 +44,8 @@
     "generic": "Une erreur est survenue. Réessaie dans un instant."
   },
   "success": {
-    "title": "C'est confirmé !",
-    "text": "On t'attend. Pense à arriver quelques minutes avant.",
+    "title": "Demande envoyée !",
+    "text": "Ta réservation est en attente de confirmation par le barbier. Tu recevras sa confirmation par téléphone.",
     "addCal": "Ajouter au calendrier"
   }
 }}

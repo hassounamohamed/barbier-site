@@ -218,6 +218,8 @@ footer{text-align:center;padding:26px;font-size:.85rem;color:var(--muted)}
 .admin-table th,.admin-table td{padding:12px 14px;border-bottom:1px solid var(--border);text-align:start}
 .admin-table th{color:var(--red);font-size:.8rem;text-transform:uppercase}
 .admin-table td{font-size:.9rem}
+.admin-status{font-weight:800}.admin-status.pending{color:#b47700}.admin-status.confirmed{color:#21864b}.admin-status.cancelled{color:var(--red)}
+.admin-actions{display:flex;gap:8px;flex-wrap:wrap}.admin-action{padding:7px 10px;border:1px solid currentColor;border-radius:8px;background:transparent;color:inherit;font:inherit;font-size:.78rem;font-weight:800;cursor:pointer}.admin-action:disabled{cursor:wait;opacity:.6}.admin-action.confirm{color:#21864b}.admin-action.cancel{color:var(--red)}.admin-action.delete{color:#7b2430}
 .admin-mobile-bookings{display:none}
 @media (prefers-reduced-motion:reduce){.mq div,.hero::before,.sc,.reserve-float{animation-play-state:paused!important}}
 [dir="rtl"] .mq div{animation-direction:reverse}[dir="rtl"] .lb .pv{inset-inline-start:auto;inset-inline-end:10px}[dir="rtl"] .lb .nx{inset-inline-end:auto;inset-inline-start:10px}
@@ -240,6 +242,8 @@ footer{text-align:center;padding:26px;font-size:.85rem;color:var(--muted)}
   .admin-booking-card div{min-width:0}
   .admin-booking-card span{display:block;margin-bottom:2px;color:var(--red);font-size:.68rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
   .admin-booking-card strong{display:block;overflow-wrap:anywhere;font-size:.9rem}
+  .admin-booking-card .admin-actions{grid-column:1 / -1}
+  .admin-booking-card .admin-action{flex:1}
   .cards{grid-template-columns:1fr 1fr;gap:12px}
   #infos .cards{grid-template-columns:1fr}
   .svc h3{font-size:1.05rem}.svc p{font-size:.8rem}

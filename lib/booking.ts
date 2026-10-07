@@ -1,5 +1,5 @@
 export const BOOKING = {
-  autoConfirm: true,
+  autoConfirm: false,
   slotStep: 45,           // un créneau toutes les 45 min
   minNoticeMin: 30,
   maxDaysAhead: 30,

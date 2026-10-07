@@ -11,7 +11,7 @@
   "footer": "All rights reserved", "developedBy": "Developed by", "galleryControls": { "close": "Close", "previous": "Previous", "next": "Next", "open": "Open {alt}" }, "labels": { "theme": "Change theme", "language": "Choose language", "whatsapp": "Contact on WhatsApp" }, "marquee": "CUT • BEARD • SHAVE • FADE • STYLE •",
 "booking": {
   "title": "Book your spot",
-  "subtitle": "Pick your service, day and time. Instant confirmation, no account needed.",
+  "subtitle": "Pick your service, day and time. The barber will confirm your booking.",
   "home": "Back to home",
   "steps": ["Service", "Day", "Time", "Details"],
   "pickService": "Which service?",
@@ -43,8 +43,8 @@
     "generic": "Something went wrong. Please try again shortly."
   },
   "success": {
-    "title": "You're booked!",
-    "text": "See you soon. Please arrive a few minutes early.",
+    "title": "Request sent!",
+    "text": "Your booking is waiting for the barber's confirmation. You will be contacted by phone.",
     "addCal": "Add to calendar"
   }
 }}
