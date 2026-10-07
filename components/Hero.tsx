@@ -1,9 +1,10 @@
+import Link from "next/link";
 import { config } from "@/lib/config";
+import { reserverHref } from "@/lib/routes";
 import HoursBadge from "./HoursBadge";
-import Icon from "./Icon";
-import type { Messages } from "@/lib/i18n";
+import type { Locale, Messages } from "@/lib/i18n";
 
-export default function Hero({ messages }: { messages: Messages }) {
+export default function Hero({ locale, messages }: { locale: Locale; messages: Messages }) {
   return (
     <header className="hero">
       <span className="eyebrow">{messages.hero.eyebrow.replace("{city}", config.city).replace("{since}", String(config.since))}</span>
@@ -15,7 +16,7 @@ export default function Hero({ messages }: { messages: Messages }) {
         {messages.hero.lead}
       </p>
       <div className="btns">
-        <a className="btn p" href={`tel:${config.phone}`}><Icon name="phone" size={20} />{messages.hero.book}</a>
+        <Link className="btn p" href={reserverHref(locale)}>{messages.hero.book}</Link>
         <a className="btn s" href="#infos">{messages.hero.details}</a>
       </div>
       <HoursBadge messages={messages} />

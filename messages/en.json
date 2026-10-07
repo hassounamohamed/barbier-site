@@ -8,5 +8,43 @@
   "hours": { "days": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] },
   "status": { "open": "Open now · until {hour}", "closed": "Currently closed", "loading": "..." },
   "contact": { "title": "Book an appointment", "copy": "A call or message, and your chair is ready.", "call": "Call", "whatsapp": "WhatsApp", "instagram": "Instagram", "facebook": "Facebook" },
-  "footer": "All rights reserved", "developedBy": "Developed by", "galleryControls": { "close": "Close", "previous": "Previous", "next": "Next", "open": "Open {alt}" }, "labels": { "theme": "Change theme", "language": "Choose language", "whatsapp": "Contact on WhatsApp" }, "marquee": "CUT • BEARD • SHAVE • FADE • STYLE •"
-}
+  "footer": "All rights reserved", "developedBy": "Developed by", "galleryControls": { "close": "Close", "previous": "Previous", "next": "Next", "open": "Open {alt}" }, "labels": { "theme": "Change theme", "language": "Choose language", "whatsapp": "Contact on WhatsApp" }, "marquee": "CUT • BEARD • SHAVE • FADE • STYLE •",
+"booking": {
+  "title": "Book your spot",
+  "subtitle": "Pick your service, day and time. Instant confirmation, no account needed.",
+  "home": "Back to home",
+  "steps": ["Service", "Day", "Time", "Details"],
+  "pickService": "Which service?",
+  "pickDate": "Which day?",
+  "pickTime": "What time?",
+  "yourInfo": "Almost done!",
+  "min": "min",
+  "today": "Today",
+  "tomorrow": "Tomorrow",
+  "closed": "Closed",
+  "noSlots": "No free slots left that day.",
+  "changeDay": "Pick another day",
+  "slotsError": "Couldn't load the time slots.",
+  "retry": "Try again",
+  "back": "Back",
+  "next": "Next",
+  "confirm": "Confirm booking",
+  "confirming": "Confirming...",
+  "name": "Your name",
+  "namePh": "First and last name",
+  "phone": "Phone",
+  "nameInvalid": "Enter your name (2 letters minimum).",
+  "phoneInvalid": "Tunisian number with 8 digits.",
+  "ticket": { "service": "Service", "day": "Day", "time": "Time" },
+  "errors": {
+    "taken": "That slot was just taken. Please pick another.",
+    "tooMany": "Too many active bookings for this number.",
+    "invalid": "Please check the information you entered.",
+    "generic": "Something went wrong. Please try again shortly."
+  },
+  "success": {
+    "title": "You're booked!",
+    "text": "See you soon. Please arrive a few minutes early.",
+    "addCal": "Add to calendar"
+  }
+}}

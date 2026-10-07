@@ -27,7 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </Script>
       </head>
       <body className={`${playfair.variable} ${inter.variable} ${cairo.variable}`}>
-        <LocaleDocument />
+        <LocaleDocument locale="fr" />
         <Loader />
         <BarberPole />
         {children}

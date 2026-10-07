@@ -6,7 +6,7 @@ import Gallery from "./Gallery";
 import Location from "./Location";
 import Contact from "./Contact";
 import TopBar from "./TopBar";
-import WhatsAppFloat from "./WhatsAppFloat";
+import ReservationFloat from "./ReservationFloat";
 import { config } from "@/lib/config";
 import { getMessages, type Locale } from "@/lib/i18n";
 
@@ -22,7 +22,7 @@ export default function HomePage({ locale }: { locale: Locale }) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       <TopBar locale={locale} messages={messages} />
       <main>
-        <Hero messages={messages} />
+        <Hero locale={locale} messages={messages} />
         <Marquee messages={messages} />
         <About messages={messages} />
         <Services messages={messages} />
@@ -36,7 +36,7 @@ export default function HomePage({ locale }: { locale: Locale }) {
           </a>
         </footer>
       </main>
-      <WhatsAppFloat messages={messages} />
+      <ReservationFloat locale={locale} messages={messages} />
     </>
   );
 }

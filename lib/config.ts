@@ -12,7 +12,15 @@ export const config = {
   address: "Rue, quartier, Bembla",
   aboutImage: "/gallery/pic0.jpeg",
   // 0 = dimanche ... 6 = samedi ; null = fermé
-  hours: [[9, 21], null , [14, 20], [14, 20], [14, 20], [14, 20], [9, 21]] as ([number, number] | null)[],
+   hours: [
+    [9, 21],   // Dimanche
+    null,      // Lundi (fermé)
+    [14, 20],  // Mardi
+    [14, 20],  // Mercredi
+    [14, 20],  // Jeudi
+    [14, 20],  // Vendredi
+    [9, 21],   // Samedi
+  ] as ([number, number] | null)[],
 
   stats: [
     { n: 3, key: "years", suffix: "" },

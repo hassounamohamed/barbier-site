@@ -8,5 +8,44 @@
   "hours": { "days": ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"] },
   "status": { "open": "Ouvert maintenant · jusqu'à {hour}h", "closed": "Fermé actuellement", "loading": "..." },
   "contact": { "title": "Prends rendez-vous", "copy": "Un appel, un message, et ta place est réservée.", "call": "Appeler", "whatsapp": "WhatsApp", "instagram": "Instagram", "facebook": "Facebook" },
-  "footer": "Tous droits réservés", "developedBy": "Développé par", "galleryControls": { "close": "Fermer", "previous": "Précédent", "next": "Suivant", "open": "Ouvrir {alt}" }, "labels": { "theme": "Changer de thème", "language": "Choisir la langue", "whatsapp": "Contacter sur WhatsApp" }, "marquee": "COUPE • BARBE • RASAGE • DÉGRADÉ • STYLE •"
-}
+  "footer": "Tous droits réservés", "developedBy": "Développé par", "galleryControls": { "close": "Fermer", "previous": "Précédent", "next": "Suivant", "open": "Ouvrir {alt}" }, "labels": { "theme": "Changer de thème", "language": "Choisir la langue", "whatsapp": "Contacter sur WhatsApp" }, "marquee": "COUPE • BARBE • RASAGE • DÉGRADÉ • STYLE •",
+
+"booking": {
+  "title": "Réserve ta place",
+  "subtitle": "Choisis ton service, ton jour et ton heure. Confirmation immédiate, sans compte.",
+  "home": "Retour à l'accueil",
+  "steps": ["Service", "Jour", "Heure", "Infos"],
+  "pickService": "Quel service ?",
+  "pickDate": "Quel jour ?",
+  "pickTime": "Quelle heure ?",
+  "yourInfo": "Presque fini !",
+  "min": "min",
+  "today": "Aujourd'hui",
+  "tomorrow": "Demain",
+  "closed": "Fermé",
+  "noSlots": "Plus de créneau libre ce jour-là.",
+  "changeDay": "Choisir un autre jour",
+  "slotsError": "Impossible de charger les créneaux.",
+  "retry": "Réessayer",
+  "back": "Retour",
+  "next": "Suivant",
+  "confirm": "Confirmer la réservation",
+  "confirming": "Confirmation...",
+  "name": "Ton nom",
+  "namePh": "Prénom et nom",
+  "phone": "Téléphone",
+  "nameInvalid": "Entre ton nom (2 lettres minimum).",
+  "phoneInvalid": "Numéro tunisien à 8 chiffres.",
+  "ticket": { "service": "Service", "day": "Jour", "time": "Heure" },
+  "errors": {
+    "taken": "Ce créneau vient d'être pris. Choisis-en un autre.",
+    "tooMany": "Trop de réservations actives pour ce numéro.",
+    "invalid": "Vérifie les informations saisies.",
+    "generic": "Une erreur est survenue. Réessaie dans un instant."
+  },
+  "success": {
+    "title": "C'est confirmé !",
+    "text": "On t'attend. Pense à arriver quelques minutes avant.",
+    "addCal": "Ajouter au calendrier"
+  }
+}}
