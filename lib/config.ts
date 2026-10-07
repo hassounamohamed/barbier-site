@@ -13,13 +13,13 @@ export const config = {
   aboutImage: "/gallery/pic0.jpeg",
   // 0 = dimanche ... 6 = samedi ; null = fermé
    hours: [
-    [9, 21],   // Dimanche
+    [9, 22],   // Dimanche
     null,      // Lundi (fermé)
-    [14, 20],  // Mardi
-    [14, 20],  // Mercredi
-    [14, 20],  // Jeudi
-    [14, 20],  // Vendredi
-    [9, 21],   // Samedi
+    [14, 21],  // Mardi
+    [14, 21],  // Mercredi
+    [14, 21],  // Jeudi
+    [14, 21],  // Vendredi
+    [9, 22],   // Samedi
   ] as ([number, number] | null)[],
 
   stats: [
