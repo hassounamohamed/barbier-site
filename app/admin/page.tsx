@@ -62,6 +62,7 @@ export default function AdminPage() {
   const router = useRouter();
   const [bookings, setBookings] = useState<Booking[]>([]);
   const [error, setError] = useState("");
+  const [notice, setNotice] = useState("");
   const [updating, setUpdating] = useState<string | null>(null);
   const [dateFilter, setDateFilter] = useState("");
   const [serviceFilter, setServiceFilter] = useState("");
@@ -122,6 +123,7 @@ export default function AdminPage() {
     if (!booking) return;
     setUpdating(id);
     setError("");
+    setNotice("");
     try {
       const response = await fetch("/api/admin/bookings", {
         method: "PATCH",
@@ -135,6 +137,9 @@ export default function AdminPage() {
       }
       const result = await response.json();
       openWhatsAppMessage(booking, status);
+      setNotice(status === "confirmed"
+        ? "Réservation confirmée. Le message WhatsApp est prêt à être envoyé."
+        : "Réservation annulée. Le message WhatsApp est prêt à être envoyé.");
       setBookings((current) => current.map((currentBooking) =>
         currentBooking.id === id ? { ...currentBooking, status: result.booking.status } : currentBooking
       ));
@@ -151,6 +156,7 @@ export default function AdminPage() {
     if (!booking) return;
     setUpdating(id);
     setError("");
+    setNotice("");
     try {
       const response = await fetch("/api/admin/bookings", {
         method: "DELETE",
@@ -164,6 +170,7 @@ export default function AdminPage() {
       }
       await response.json();
       openWhatsAppMessage(booking, "deleted");
+      setNotice("Réservation supprimée. Le message WhatsApp est prêt à être envoyé.");
       setBookings((current) => current.filter((booking) => booking.id !== id));
     } catch {
       setError("Impossible de supprimer la réservation.");
@@ -179,7 +186,8 @@ export default function AdminPage() {
           <div><p className="eyebrow">HABIB KORBI</p><h1>Réservations</h1></div>
           <button className="btn s" type="button" onClick={logout}>Déconnexion</button>
         </div>
-        {error && <p className="bk-err" role="alert">{error}</p>}
+        {error && <p className="admin-feedback error" role="alert">{error}</p>}
+        {notice && <p className="admin-feedback success" role="status">{notice}</p>}
         {!error && (
           <>
             <div className="admin-stat">

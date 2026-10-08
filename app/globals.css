@@ -213,14 +213,27 @@ footer{text-align:center;padding:26px;font-size:.85rem;color:var(--muted)}
 .admin-stat{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:24px;padding:16px 18px;border-radius:14px;background:var(--bg);border:1px solid var(--border)}
 .admin-stat span{color:var(--muted);font-weight:700}
 .admin-stat strong{color:var(--red);font:900 2rem var(--font-playfair),serif}
-.admin-filters{display:flex;align-items:end;gap:12px;flex-wrap:wrap;margin-bottom:24px;padding:16px 18px;border:1px solid var(--border);border-radius:14px;background:var(--bg)}
-.admin-filters label{display:grid;gap:6px;color:var(--muted);font-size:.75rem;font-weight:800;text-transform:uppercase}
-.admin-filters select{min-height:40px;min-width:150px;padding:8px 10px;border:1px solid var(--border);border-radius:8px;background:var(--card);color:var(--ink);font:inherit}
-.admin-filters select:focus{border-color:var(--red);outline:0}
+.admin-feedback{margin:0 0 18px;padding:13px 16px;border:1px solid;border-radius:12px;font-weight:700;box-shadow:0 8px 20px rgba(0,0,0,.12);animation:adminFeedbackIn .25s ease}
+.admin-feedback.error{border-color:var(--red);background:rgba(192,40,59,.12);color:var(--red)}
+.admin-feedback.success{border-color:#21864b;background:rgba(33,134,75,.12);color:#21864b}
+@keyframes adminFeedbackIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+.admin-filters{display:flex;align-items:end;gap:12px;flex-wrap:wrap;margin-bottom:24px;padding:16px 18px;border:1px solid var(--border);border-radius:14px;background:linear-gradient(135deg,var(--bg),rgba(31,68,120,.08))}
+.admin-filters label{display:grid;gap:6px;color:var(--muted);font-size:.75rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
+.admin-filters select{min-height:42px;min-width:160px;padding:8px 34px 8px 12px;border:1px solid var(--border);border-radius:10px;background-color:var(--card);color:var(--ink);font:inherit;font-weight:600;outline:0;cursor:pointer}
+.admin-filters select:hover{border-color:var(--blue)}
+.admin-filters select:focus{border-color:var(--red);box-shadow:0 0 0 3px var(--tint)}
+.admin-filters select option{background:var(--card);color:var(--ink);font:inherit;font-weight:600}
+.admin-filters select option:checked{background:var(--blue);color:#fff}
+.admin-filters select option:hover{background:var(--red);color:#fff}
 .admin-filter-reset{min-height:40px;padding:8px 12px;border:1px solid var(--red);border-radius:8px;background:transparent;color:var(--red);font:inherit;font-size:.78rem;font-weight:800;cursor:pointer}
-.admin-table-wrap{overflow-x:auto}
+.admin-filter-reset:hover{background:var(--red);color:#fff}
+.admin-table-wrap{max-height:540px;overflow:auto;border:1px solid var(--border);border-radius:14px;scrollbar-color:var(--red) var(--bg);scrollbar-width:thin}
+.admin-table-wrap::-webkit-scrollbar{width:9px;height:9px}
+.admin-table-wrap::-webkit-scrollbar-track{background:var(--bg);border-radius:10px}
+.admin-table-wrap::-webkit-scrollbar-thumb{background:var(--red);border:2px solid var(--bg);border-radius:10px}
 .admin-table{width:100%;border-collapse:collapse;white-space:nowrap}
 .admin-table th,.admin-table td{padding:12px 14px;border-bottom:1px solid var(--border);text-align:start}
+.admin-table thead th{position:sticky;top:0;background:var(--card);z-index:1}
 .admin-table th{color:var(--red);font-size:.8rem;text-transform:uppercase}
 .admin-table td{font-size:.9rem}
 .admin-status{font-weight:800}.admin-status.pending{color:#b47700}.admin-status.confirmed{color:#21864b}.admin-status.cancelled{color:var(--red)}
