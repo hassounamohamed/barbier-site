@@ -1,10 +1,15 @@
 "use client";
-import { useState } from "react";
+import { useSyncExternalStore } from "react";
 import { config } from "@/lib/config";
 import type { Messages } from "@/lib/i18n";
+import { nowInTunis, subscribeToTunisDay } from "@/lib/slots";
 
 export default function Hours({ messages }: { messages: Messages }) {
-  const [today] = useState(() => new Date().getDay());
+  const today = useSyncExternalStore(
+    subscribeToTunisDay,
+    () => nowInTunis().day,
+    () => null,
+  );
 
   return (
     <table>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 
 type Booking = {
@@ -14,6 +14,44 @@ type Booking = {
   status: "pending" | "confirmed" | "cancelled";
 };
 
+function openWhatsAppMessage(booking: Booking, action: "confirmed" | "cancelled" | "deleted") {
+  const phone = booking.phone.replace(/\D/g, "");
+  const recipient = phone.startsWith("216") ? phone : `216${phone}`;
+  const details = [
+    `Date : ${booking.date}`,
+    `Heure : ${booking.start_time} - ${booking.end_time}`,
+    `Service : ${booking.service_id}`,
+  ];
+  const messages = {
+    confirmed: [
+      `Bonjour ${booking.name},`,
+      "Bonne nouvelle ! Votre rendez-vous chez Habib Korbi est confirmé.",
+      "",
+      ...details,
+      "",
+      "Merci pour votre confiance. À bientôt !",
+    ],
+    cancelled: [
+      `Bonjour ${booking.name},`,
+      "Nous vous informons que votre rendez-vous chez Habib Korbi a été annulé.",
+      "",
+      ...details,
+      "",
+      "Pour choisir un autre créneau, veuillez effectuer une nouvelle réservation. Merci de votre compréhension.",
+    ],
+    deleted: [
+      `Bonjour ${booking.name},`,
+      "Votre réservation chez Habib Korbi a été supprimée de notre système.",
+      "",
+      ...details,
+      "",
+      "Si cette suppression n'était pas prévue, veuillez nous contacter. Merci.",
+    ],
+  };
+  const message = messages[action].join("\n");
+  window.open(`https://wa.me/${recipient}?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
+}
+
 const statusLabel: Record<Booking["status"], string> = {
   pending: "En attente",
   confirmed: "Confirmée",
@@ -25,7 +63,20 @@ export default function AdminPage() {
   const [bookings, setBookings] = useState<Booking[]>([]);
   const [error, setError] = useState("");
   const [updating, setUpdating] = useState<string | null>(null);
-  const clientCount = new Set(bookings.map((booking) => booking.phone)).size;
+  const [dateFilter, setDateFilter] = useState("");
+  const [serviceFilter, setServiceFilter] = useState("");
+  const [statusFilter, setStatusFilter] = useState("");
+
+  const filterOptions = useMemo(() => ({
+    dates: [...new Set(bookings.map((booking) => booking.date))],
+    services: [...new Set(bookings.map((booking) => booking.service_id))],
+  }), [bookings]);
+  const filteredBookings = useMemo(() => bookings.filter((booking) =>
+    (!dateFilter || booking.date === dateFilter) &&
+    (!serviceFilter || booking.service_id === serviceFilter) &&
+    (!statusFilter || booking.status === statusFilter)
+  ), [bookings, dateFilter, serviceFilter, statusFilter]);
+  const clientCount = new Set(filteredBookings.map((booking) => booking.phone)).size;
 
   useEffect(() => {
     let active = true;
@@ -67,6 +118,8 @@ export default function AdminPage() {
   }
 
   async function updateBooking(id: string, status: "confirmed" | "cancelled") {
+    const booking = bookings.find((item) => item.id === id);
+    if (!booking) return;
     setUpdating(id);
     setError("");
     try {
@@ -81,8 +134,9 @@ export default function AdminPage() {
         return;
       }
       const result = await response.json();
-      setBookings((current) => current.map((booking) =>
-        booking.id === id ? { ...booking, status: result.booking.status } : booking
+      openWhatsAppMessage(booking, status);
+      setBookings((current) => current.map((currentBooking) =>
+        currentBooking.id === id ? { ...currentBooking, status: result.booking.status } : currentBooking
       ));
     } catch {
       setError("Impossible de modifier la réservation.");
@@ -93,6 +147,8 @@ export default function AdminPage() {
 
   async function deleteBooking(id: string) {
     if (!window.confirm("Supprimer définitivement cette réservation ?")) return;
+    const booking = bookings.find((item) => item.id === id);
+    if (!booking) return;
     setUpdating(id);
     setError("");
     try {
@@ -106,6 +162,8 @@ export default function AdminPage() {
         setError(result?.error ?? "Impossible de supprimer la réservation.");
         return;
       }
+      await response.json();
+      openWhatsAppMessage(booking, "deleted");
       setBookings((current) => current.filter((booking) => booking.id !== id));
     } catch {
       setError("Impossible de supprimer la réservation.");
@@ -123,18 +181,53 @@ export default function AdminPage() {
         </div>
         {error && <p className="bk-err" role="alert">{error}</p>}
         {!error && (
-          <div className="admin-stat">
-            <span>Clients ayant réservé</span>
-            <strong>{clientCount}</strong>
-          </div>
+          <>
+            <div className="admin-stat">
+              <span>Clients ayant réservé</span>
+              <strong>{clientCount}</strong>
+            </div>
+            <div className="admin-filters" aria-label="Filtres des réservations">
+              <label>
+                Date
+                <select value={dateFilter} onChange={(event) => setDateFilter(event.target.value)}>
+                  <option value="">Toutes les dates</option>
+                  {filterOptions.dates.map((date) => <option key={date} value={date}>{date}</option>)}
+                </select>
+              </label>
+              <label>
+                Service
+                <select value={serviceFilter} onChange={(event) => setServiceFilter(event.target.value)}>
+                  <option value="">Tous les services</option>
+                  {filterOptions.services.map((service) => <option key={service} value={service}>{service}</option>)}
+                </select>
+              </label>
+              <label>
+                Statut
+                <select value={statusFilter} onChange={(event) => setStatusFilter(event.target.value)}>
+                  <option value="">Tous les statuts</option>
+                  <option value="pending">En attente</option>
+                  <option value="confirmed">Confirmée</option>
+                </select>
+              </label>
+              {(dateFilter || serviceFilter || statusFilter) && (
+                <button className="admin-filter-reset" type="button" onClick={() => {
+                  setDateFilter("");
+                  setServiceFilter("");
+                  setStatusFilter("");
+                }}>
+                  Réinitialiser
+                </button>
+              )}
+            </div>
+          </>
         )}
-        {!error && bookings.length === 0 && <p>Aucune réservation.</p>}
-        {bookings.length > 0 && (
+        {!error && filteredBookings.length === 0 && <p>Aucune réservation pour ces filtres.</p>}
+        {filteredBookings.length > 0 && (
           <>
             <div className="admin-table-wrap">
               <table className="admin-table">
                 <thead><tr><th>Date</th><th>Heure</th><th>Service</th><th>Client</th><th>Téléphone</th><th>Statut</th><th>Actions</th></tr></thead>
-                <tbody>{bookings.map((booking) => (
+                <tbody>{filteredBookings.map((booking) => (
                   <tr key={booking.id}>
                     <td>{booking.date}</td><td>{booking.start_time} - {booking.end_time}</td><td>{booking.service_id}</td>
                     <td>{booking.name}</td><td>{booking.phone}</td>
@@ -145,7 +238,7 @@ export default function AdminPage() {
               </table>
             </div>
             <div className="admin-mobile-bookings">
-              {bookings.map((booking) => (
+              {filteredBookings.map((booking) => (
                 <article className="admin-booking-card" key={booking.id}>
                   <div><span>Date</span><strong>{booking.date}</strong></div>
                   <div><span>Heure</span><strong>{booking.start_time} - {booking.end_time}</strong></div>

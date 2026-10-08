@@ -14,7 +14,25 @@ export function nowInTunis() {
     hour: "2-digit", minute: "2-digit", hourCycle: "h23",
   }).formatToParts(new Date());
   const g = (t: string) => parts.find((p) => p.type === t)!.value;
-  return { date: `${g("year")}-${g("month")}-${g("day")}`, minutes: Number(g("hour")) * 60 + Number(g("minute")) };
+  const date = `${g("year")}-${g("month")}-${g("day")}`;
+  return {
+    date,
+    day: new Date(`${date}T00:00:00Z`).getUTCDay(),
+    minutes: Number(g("hour")) * 60 + Number(g("minute")),
+  };
+}
+
+export function subscribeToTunisDay(onChange: () => void) {
+  let lastDay = nowInTunis().date;
+  const timer = window.setInterval(() => {
+    const day = nowInTunis().date;
+    if (day !== lastDay) {
+      lastDay = day;
+      onChange();
+    }
+  }, 1000);
+
+  return () => window.clearInterval(timer);
 }
 
 const addDays = (date: string, n: number) => {

@@ -41,6 +41,16 @@ export async function PATCH(req: Request) {
   }
 
   const { id, status } = parsed.data;
+  const { data: existing, error: lookupError } = await supabaseAdmin
+    .from("bookings")
+    .select("name,phone,date,start_time,end_time,service_id")
+    .eq("id", id)
+    .eq("status", "pending")
+    .single();
+  if (lookupError || !existing) {
+    return NextResponse.json({ error: "Réservation introuvable ou déjà traitée" }, { status: 404 });
+  }
+
   const { data, error } = await supabaseAdmin
     .from("bookings")
     .update({ status })
@@ -64,11 +74,20 @@ export async function DELETE(req: Request) {
     return NextResponse.json({ error: "Données invalides" }, { status: 400 });
   }
 
+  const { data: existing, error: lookupError } = await supabaseAdmin
+    .from("bookings")
+    .select("name,phone,date,start_time,end_time,service_id")
+    .eq("id", parsed.data.id)
+    .single();
+  if (lookupError || !existing) {
+    return NextResponse.json({ error: "Réservation introuvable" }, { status: 404 });
+  }
+
   const { error } = await supabaseAdmin
     .from("bookings")
     .delete()
     .eq("id", parsed.data.id);
 
   if (error) return NextResponse.json({ error: "Impossible de supprimer la réservation" }, { status: 500 });
-  return NextResponse.json({ ok: true });
+  return NextResponse.json({ ok: true, notificationSent: true });
 }
