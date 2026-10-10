@@ -9,6 +9,9 @@ import {
   Moon,
   Navigation,
   Phone,
+  House,
+  LogOut,
+  CalendarDays,
   Scissors,
   Smile,
   Sparkles,
@@ -24,7 +27,7 @@ type IconName =
   | "scissors" | "razor" | "beard" | "kid" | "star" | "pole"
   | "phone" | "clock" | "pin" | "zoom" | "close" | "previous"
   | "next" | "sparkles" | "smile" | "navigation" | "sun" | "moon" | "globe"
-  | "whatsapp" | "instagram" | "facebook";
+  | "home" | "log-out" | "calendar" | "whatsapp" | "instagram" | "facebook";
 
 const icons: Partial<Record<IconName, ComponentType<LucideProps>>> = {
   scissors: Scissors,
@@ -46,6 +49,9 @@ const icons: Partial<Record<IconName, ComponentType<LucideProps>>> = {
   sun: Sun,
   moon: Moon,
   globe: Globe2,
+  home: House,
+  "log-out": LogOut,
+  calendar: CalendarDays,
 };
 
 export type { IconName };

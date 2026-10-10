@@ -23,7 +23,7 @@ function getServerTheme(): Theme {
   return "light";
 }
 
-export default function TopBar({ locale, messages }: { locale: Locale; messages: Messages }) {
+export default function TopBar({ locale, messages, onLocaleChange }: { locale: Locale; messages: Messages; onLocaleChange?: (locale: Locale) => void }) {
   const [languageOpen, setLanguageOpen] = useState(false);
   const theme = useSyncExternalStore(subscribeToTheme, getTheme, getServerTheme);
   const cycle = () => {
@@ -51,7 +51,11 @@ export default function TopBar({ locale, messages }: { locale: Locale; messages:
         {languageOpen && (
           <div className="language-list" role="menu" aria-label={messages.labels.language}>
             {(["fr", "ar", "en"] as Locale[]).map((item) => (
-              <Link key={item} href={item === "fr" ? "/" : `/${item}`} className={item === locale ? "active" : ""} role="menuitem" onClick={() => setLanguageOpen(false)}>{item.toUpperCase()}</Link>
+              onLocaleChange ? (
+                <button key={item} className={item === locale ? "active" : ""} role="menuitem" type="button" onClick={() => { onLocaleChange(item); setLanguageOpen(false); }}>{item.toUpperCase()}</button>
+              ) : (
+                <Link key={item} href={item === "fr" ? "/" : `/${item}`} className={item === locale ? "active" : ""} role="menuitem" onClick={() => setLanguageOpen(false)}>{item.toUpperCase()}</Link>
+              )
             ))}
           </div>
         )}

@@ -34,31 +34,19 @@ export async function PATCH(req: Request) {
     return NextResponse.json({ error: "Non autorisé" }, { status: 401 });
   }
 
-  const raw = await req.json().catch(() => null);
-  const parsed = updateBooking.safeParse(raw);
-  if (!parsed.success) {
-    return NextResponse.json({ error: "Données invalides" }, { status: 400 });
-  }
+  const parsed = updateBooking.safeParse(await req.json().catch(() => null));
+  if (!parsed.success) return NextResponse.json({ error: "Données invalides" }, { status: 400 });
 
   const { id, status } = parsed.data;
   const { data: existing, error: lookupError } = await supabaseAdmin
-    .from("bookings")
-    .select("name,phone,date,start_time,end_time,service_id")
-    .eq("id", id)
-    .eq("status", "pending")
-    .single();
+    .from("bookings").select("id").eq("id", id).eq("status", "pending").single();
   if (lookupError || !existing) {
     return NextResponse.json({ error: "Réservation introuvable ou déjà traitée" }, { status: 404 });
   }
 
   const { data, error } = await supabaseAdmin
-    .from("bookings")
-    .update({ status })
-    .eq("id", id)
-    .eq("status", "pending")
-    .select("id,status")
-    .single();
-
+    .from("bookings").update({ status }).eq("id", id).eq("status", "pending")
+    .select("id,status").single();
   if (error) return NextResponse.json({ error: "Impossible de modifier la réservation" }, { status: 500 });
   return NextResponse.json({ ok: true, booking: data });
 }
@@ -68,26 +56,14 @@ export async function DELETE(req: Request) {
     return NextResponse.json({ error: "Non autorisé" }, { status: 401 });
   }
 
-  const raw = await req.json().catch(() => null);
-  const parsed = updateBooking.pick({ id: true }).safeParse(raw);
-  if (!parsed.success) {
-    return NextResponse.json({ error: "Données invalides" }, { status: 400 });
-  }
+  const parsed = updateBooking.pick({ id: true }).safeParse(await req.json().catch(() => null));
+  if (!parsed.success) return NextResponse.json({ error: "Données invalides" }, { status: 400 });
 
   const { data: existing, error: lookupError } = await supabaseAdmin
-    .from("bookings")
-    .select("name,phone,date,start_time,end_time,service_id")
-    .eq("id", parsed.data.id)
-    .single();
-  if (lookupError || !existing) {
-    return NextResponse.json({ error: "Réservation introuvable" }, { status: 404 });
-  }
+    .from("bookings").select("id").eq("id", parsed.data.id).single();
+  if (lookupError || !existing) return NextResponse.json({ error: "Réservation introuvable" }, { status: 404 });
 
-  const { error } = await supabaseAdmin
-    .from("bookings")
-    .delete()
-    .eq("id", parsed.data.id);
-
+  const { error } = await supabaseAdmin.from("bookings").delete().eq("id", parsed.data.id);
   if (error) return NextResponse.json({ error: "Impossible de supprimer la réservation" }, { status: 500 });
-  return NextResponse.json({ ok: true, notificationSent: true });
+  return NextResponse.json({ ok: true });
 }
