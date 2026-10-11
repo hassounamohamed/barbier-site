@@ -15,6 +15,7 @@ export const metadata: Metadata = {
   title: `${config.name} — Barbier à ${config.city}`,
   description: `Coupe, dégradé, barbe et rasage à ${config.city}. Réservez par téléphone ou WhatsApp.`,
   icons: { icon: [{ url: "/icon.svg", type: "image/svg+xml" }] },
+verification: { google: "google-site-verification=hFjmUXir6FbCmtVG0lohAGqjNWGlLbO-808RSlUO3w0" },
 };
 export const viewport: Viewport = { viewportFit: "cover", themeColor: "#0e1628" };
 
