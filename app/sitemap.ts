@@ -4,6 +4,7 @@ const base = "https://barberhkk.vercel.app";
 
 const LAST_MODIFIED = new Date("2026-10-11");
 
+
 const pages = [
   { fr: "/", ar: "/ar", en: "/en", priority: 1 },
   { fr: "/reserver", ar: "/ar/reserver", en: "/en/reserver", priority: 0.8 },
